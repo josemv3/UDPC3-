@@ -319,3 +319,33 @@ func findLogestPalindrome() -> String {
 
     return longestPalindrome
 }
+
+//Q17
+// What are all of the letters that never appear consecutively
+// in an English word? For example, we know that “U” isn’t an answer,
+// because of the word VACUUM, and we know that “A” isn’t an answer,
+// because of “AARDVARK”, but which letters never appear consecutively?
+
+let sowPods = Array(arrayLiteral: "vacuum", "oregon", "aardvark")
+
+func checkForDoubledLetters(words: [String]) -> [Character] {
+    
+    var alphabet = Array("abcdefghijklmnopqrstuvwxyz")
+    var doubledLetters = [String]()
+    var index = 0
+
+    while index < words.count {
+        var word = Array(words[index])
+        for char in word {
+            if char == word[index + 1] {
+                doubledLetters.append(String(char))
+            }
+        }
+        index += 1
+    }
+
+    var nonDoubledLetters = alphabet.filter { !doubledLetters.contains(String($0)) }
+    print(doubledLetters)
+    return nonDoubledLetters
+    
+}
